@@ -533,9 +533,14 @@ img{max-width:100%;display:block;}
 }
 .detail-time{
   font-family:var(--font-serif);
-  font-size:1.7rem;
-  color:var(--blue-600);
+  font-size:1.7rem !important;
+  color:var(--blue-600) !important;
   margin:0 0 4px !important;
+}
+.detail-time-big{
+  font-size:2.6rem !important;
+  font-weight:600;
+  margin:6px 0 0 !important;
 }
 .detail-card p{
   margin:2px 0;
