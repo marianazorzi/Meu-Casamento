@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupScrollReveal();
   setupRsvpForm();
   setupCopyAddress();
+  setupPhoneMask();
 });
 
 function populateContent() {
@@ -187,6 +188,30 @@ function setupCopyAddress() {
     } catch (e) {
       alert(CONFIG.address);
     }
+  });
+}
+
+/* ---------------------------------------------------------
+   MÁSCARA DE TELEFONE (WHATSAPP)
+   --------------------------------------------------------- */
+function setupPhoneMask() {
+  const input = document.getElementById("rsvpPhone");
+
+  input.addEventListener("input", () => {
+    let digits = input.value.replace(/\D/g, "").slice(0, 11);
+
+    let formatted = digits;
+    if (digits.length > 10) {
+      formatted = digits.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    } else if (digits.length > 6) {
+      formatted = digits.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else if (digits.length > 2) {
+      formatted = digits.replace(/(\d{2})(\d{0,4})/, "($1) $2");
+    } else if (digits.length > 0) {
+      formatted = digits.replace(/(\d{0,2})/, "($1");
+    }
+
+    input.value = formatted.trim().replace(/-$/, "");
   });
 }
 
