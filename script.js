@@ -8,7 +8,7 @@ const CONFIG = {
 
   // Data e hora do casamento (usada na contagem regressiva e no cabeçalho)
   weddingDateISO: "2026-11-21T19:00:00",
-  heroDateText: "21 de Novembro de 2026",
+  heroDateText: "21 • 11 • 2026",
   footerDateText: "21.11.2026",
 
   message:

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Allura&family=Jost:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Allura&family=Montserrat:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -25,6 +25,7 @@
     <div class="envelope-wrap">
       <p class="splash-kicker">O Casamento de</p>
       <h2 class="splash-names" id="splashNames">Noivo &amp; Noiva</h2>
+      <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
 
       <div class="envelope" id="envelope">
         <div class="envelope-back"></div>
@@ -37,7 +38,7 @@
       </div>
 
       <button id="openBtn" class="btn-open" type="button">
-        Toque para abrir o convite
+        ♡ Abrir convite
       </button>
     </div>
     <div class="splash-decor bottom"></div>
@@ -52,40 +53,49 @@
         <img src="images/imagens.jpeg" alt="">
       </div>
       <div class="hero-inner">
-        <p class="reveal kicker">Você foi convidado(a) para celebrar</p>
+        <p class="reveal kicker">Você está convidado(a) para celebrar</p>
         <h1 class="reveal names" id="heroNames">Noivo &amp; Noiva</h1>
-        <div class="reveal divider"><span></span><i class="fa-regular fa-heart"></i><span></span></div>
-        <p class="reveal hero-date" id="heroDate">00 de Mês de 2026</p>
+        <p class="reveal hero-tagline">Nosso grande dia</p>
+        <div class="reveal divider"><span></span><i></i><span></span></div>
+        <p class="reveal hero-date" id="heroDate">00 • 00 • 0000</p>
       </div>
-      <a href="#mensagem" class="scroll-cue reveal" aria-label="Rolar para baixo">
+      <a href="#historia" class="scroll-cue reveal" aria-label="Rolar para baixo">
         <i class="fa-solid fa-chevron-down"></i>
       </a>
     </section>
 
-    <!-- MENSAGEM -->
-    <section class="message" id="mensagem">
-      <div class="section-inner reveal">
-        <i class="fa-solid fa-ring section-icon"></i>
-        <h2 class="section-title">Nosso grande dia</h2>
-        <img src="images/abraco-beijo.jpeg" alt="Lincon Fernando e Mariana Zorzi" class="message-photo">
-        <p class="message-text" id="coupleMessage">
-          Com a bênção de Deus e de nossas famílias, convidamos você para celebrar conosco o início de uma nova
-          história. Sua presença tornará este dia ainda mais especial e fará parte de uma lembrança que guardaremos
-          para sempre.
-        </p>
-        <p class="signature" id="coupleSignature">Noivo &amp; Noiva</p>
+    <!-- NOSSA HISTÓRIA -->
+    <section class="story" id="historia">
+      <div class="section-inner story-inner reveal">
+        <span class="eyebrow">Nossa história</span>
+        <h2 class="section-title">Um amor que virou para sempre</h2>
+        <div class="story-grid">
+          <img src="images/abraco-beijo.jpeg" alt="Lincon Fernando e Mariana Zorzi" class="story-photo">
+          <div class="story-text">
+            <p class="message-text" id="coupleMessage">
+              Com a bênção de Deus e de nossas famílias, convidamos você para celebrar conosco o início de uma nova
+              história. Sua presença tornará este dia ainda mais especial e fará parte de uma lembrança que
+              guardaremos para sempre.
+            </p>
+            <p class="signature" id="coupleSignature">Noivo &amp; Noiva</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- CONTAGEM REGRESSIVA -->
     <section class="countdown-section">
       <div class="section-inner reveal">
-        <h2 class="section-title light">Faltam apenas</h2>
+        <span class="eyebrow light">Contagem regressiva</span>
+        <h2 class="section-title light">Faltam</h2>
         <div class="countdown" id="countdown">
           <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">dias</span></div>
+          <span class="cd-sep">&bull;</span>
           <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">horas</span></div>
-          <div class="cd-box"><span class="cd-num" id="cdMinutes">00</span><span class="cd-label">min</span></div>
-          <div class="cd-box"><span class="cd-num" id="cdSeconds">00</span><span class="cd-label">seg</span></div>
+          <span class="cd-sep">&bull;</span>
+          <div class="cd-box"><span class="cd-num" id="cdMinutes">00</span><span class="cd-label">minutos</span></div>
+          <span class="cd-sep">&bull;</span>
+          <div class="cd-box"><span class="cd-num" id="cdSeconds">00</span><span class="cd-label">segundos</span></div>
         </div>
       </div>
     </section>
@@ -93,12 +103,13 @@
     <!-- DETALHES DO EVENTO -->
     <section class="details" id="detalhes">
       <div class="section-inner reveal">
-        <h2 class="section-title">Detalhes da Celebração</h2>
+        <span class="eyebrow">A Celebração</span>
+        <h2 class="section-title">Detalhes da Festa</h2>
         <div class="details-grid details-grid-single">
           <div class="detail-card">
             <i class="fa-solid fa-champagne-glasses"></i>
             <h3 id="partyLabel">Festa</h3>
-            <p id="partyTime">19:00</p>
+            <p class="detail-time" id="partyTime">19:00</p>
             <p id="partyPlace">Edinaldo - Av</p>
           </div>
         </div>
@@ -109,6 +120,7 @@
     <section class="location" id="local">
       <div class="section-inner reveal">
         <i class="fa-solid fa-location-dot section-icon"></i>
+        <span class="eyebrow">Localização</span>
         <h2 class="section-title">Como Chegar</h2>
         <p class="location-address" id="locationAddress">Rua das Flores, 123 - Centro, Cidade - UF</p>
         <div class="map-wrap">
@@ -131,8 +143,9 @@
     <section class="rsvp" id="rsvp">
       <div class="section-inner reveal">
         <i class="fa-solid fa-envelope-open-text section-icon"></i>
-        <h2 class="section-title">Confirme sua Presença</h2>
-        <p class="rsvp-sub">Por favor, confirme até <span id="rsvpDeadline">a data limite</span></p>
+        <span class="eyebrow">RSVP</span>
+        <h2 class="section-title">Você vem celebrar conosco?</h2>
+        <p class="rsvp-sub">Confirme sua presença até <span id="rsvpDeadline">a data limite</span></p>
 
         <form id="rsvpForm" class="rsvp-form">
           <div class="field">
