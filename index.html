@@ -1,204 +1,203 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Convite de Casamento</title>
-<meta name="description" content="Convite de casamento online">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Convite de Casamento</title>
+  <meta name="description" content="Convite de casamento online">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Mrs+Saint+Delafield&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Allura&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ===== TELA DE ABERTURA (ENVELOPE) ===== -->
-<div id="splash">
-  <div class="splash-decor top"></div>
-  <div class="envelope-wrap">
-    <p class="splash-kicker">O Casamento de</p>
-    <h2 class="splash-names" id="splashNames">Noivo &amp; Noiva</h2>
+  <!-- ===== TELA DE ABERTURA (ENVELOPE) ===== -->
+  <div id="splash">
+    <div class="splash-decor top"></div>
+    <div class="envelope-wrap">
+      <p class="splash-kicker">O Casamento de</p>
+      <h2 class="splash-names" id="splashNames">Noivo &amp; Noiva</h2>
 
-    <div class="envelope" id="envelope">
-      <div class="envelope-back"></div>
-      <div class="envelope-letter">
-        <i class="fa-solid fa-heart"></i>
-        <span id="letterText">Você foi convidado(a)</span>
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-letter">
+          <i class="fa-solid fa-heart"></i>
+          <span id="letterText">Você foi convidado(a)</span>
+        </div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-seal"><i class="fa-solid fa-heart"></i></div>
       </div>
-      <div class="envelope-flap"></div>
-      <div class="envelope-seal"><i class="fa-solid fa-heart"></i></div>
-    </div>
 
-    <button id="openBtn" class="btn-open" type="button">
-      Toque para abrir o convite
-    </button>
+      <button id="openBtn" class="btn-open" type="button">
+        Toque para abrir o convite
+      </button>
+    </div>
+    <div class="splash-decor bottom"></div>
   </div>
-  <div class="splash-decor bottom"></div>
-</div>
 
-<!-- ===== CONTEÚDO PRINCIPAL ===== -->
-<main id="content">
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main id="content">
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-      <p class="reveal kicker">Você foi convidado(a) para celebrar</p>
-      <h1 class="reveal names" id="heroNames">Noivo &amp; Noiva</h1>
-      <div class="reveal divider"><span></span><i class="fa-regular fa-heart"></i><span></span></div>
-      <p class="reveal hero-date" id="heroDate">00 de Mês de 2026</p>
-    </div>
-    <a href="#mensagem" class="scroll-cue reveal" aria-label="Rolar para baixo">
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
-  </section>
-
-  <!-- MENSAGEM -->
-  <section class="message" id="mensagem">
-    <div class="section-inner reveal">
-      <i class="fa-solid fa-ring section-icon"></i>
-      <h2 class="section-title">Nosso grande dia</h2>
-      <p class="message-text" id="coupleMessage">
-        Com a bênção de Deus e de nossas famílias, convidamos você para celebrar
-        conosco o início da nossa nova história. Sua presença tornará este dia
-        ainda mais especial.
-      </p>
-      <p class="signature" id="coupleSignature">Noivo &amp; Noiva</p>
-    </div>
-  </section>
-
-  <!-- CONTAGEM REGRESSIVA -->
-  <section class="countdown-section">
-    <div class="section-inner reveal">
-      <h2 class="section-title light">Faltam apenas</h2>
-      <div class="countdown" id="countdown">
-        <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">dias</span></div>
-        <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">horas</span></div>
-        <div class="cd-box"><span class="cd-num" id="cdMinutes">00</span><span class="cd-label">min</span></div>
-        <div class="cd-box"><span class="cd-num" id="cdSeconds">00</span><span class="cd-label">seg</span></div>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="images/imagens.jpeg" alt="">
       </div>
-    </div>
-  </section>
+      <div class="hero-inner">
+        <p class="reveal kicker">Você foi convidado(a) para celebrar</p>
+        <h1 class="reveal names" id="heroNames">Noivo &amp; Noiva</h1>
+        <div class="reveal divider"><span></span><i class="fa-regular fa-heart"></i><span></span></div>
+        <p class="reveal hero-date" id="heroDate">00 de Mês de 2026</p>
+      </div>
+      <a href="#mensagem" class="scroll-cue reveal" aria-label="Rolar para baixo">
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
 
-  <!-- DETALHES DO EVENTO -->
-  <section class="details" id="detalhes">
-    <div class="section-inner reveal">
-      <h2 class="section-title">Detalhes da Celebração</h2>
-      <div class="details-grid">
-        <div class="detail-card">
-          <i class="fa-solid fa-champagne-glasses"></i>
-          <h3 id="ceremonyLabel">Cerimônia</h3>
-          <p id="ceremonyTime">16:00</p>
-          <p id="ceremonyPlace">Igreja Matriz</p>
-        </div>
-        <div class="detail-card">
-          <i class="fa-solid fa-champagne-glasses"></i>
-          <h3 id="receptionLabel">Recepção</h3>
-          <p id="receptionTime">19:00</p>
-          <p id="receptionPlace">Espaço de Festas</p>
+    <!-- MENSAGEM -->
+    <section class="message" id="mensagem">
+      <div class="section-inner reveal">
+        <i class="fa-solid fa-ring section-icon"></i>
+        <h2 class="section-title">Nosso grande dia</h2>
+        <img src="images/abraco-beijo.jpeg" alt="Lincon Fernando e Mariana Zorzi" class="message-photo">
+        <p class="message-text" id="coupleMessage">
+          ## Nosso grande dia
+
+          Com a bênção de Deus e de nossas famílias, convidamos você para celebrar conosco o início de uma nova
+          história.
+          Sua presença tornará este dia ainda mais especial e fará parte de uma lembrança que guardaremos para sempre.
+
+        </p>
+        <p class="signature" id="coupleSignature">Noivo &amp; Noiva</p>
+      </div>
+    </section>
+
+    <!-- CONTAGEM REGRESSIVA -->
+    <section class="countdown-section">
+      <div class="section-inner reveal">
+        <h2 class="section-title light">Faltam apenas</h2>
+        <div class="countdown" id="countdown">
+          <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">dias</span></div>
+          <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">horas</span></div>
+          <div class="cd-box"><span class="cd-num" id="cdMinutes">00</span><span class="cd-label">min</span></div>
+          <div class="cd-box"><span class="cd-num" id="cdSeconds">00</span><span class="cd-label">seg</span></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- LOCALIZAÇÃO -->
-  <section class="location" id="local">
-    <div class="section-inner reveal">
-      <i class="fa-solid fa-location-dot section-icon"></i>
-      <h2 class="section-title">Como Chegar</h2>
-      <p class="location-address" id="locationAddress">Rua das Flores, 123 - Centro, Cidade - UF</p>
-      <div class="map-wrap">
-        <iframe
-          id="mapFrame"
-          src=""
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-      <div class="location-actions">
-        <a id="mapLink" href="#" target="_blank" rel="noopener" class="btn-outline">
-          <i class="fa-solid fa-map-location-dot"></i> Ver no Google Maps
-        </a>
-        <button id="copyAddressBtn" class="btn-outline" type="button">
-          <i class="fa-regular fa-copy"></i> Copiar endereço
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONFIRMAÇÃO DE PRESENÇA -->
-  <section class="rsvp" id="rsvp">
-    <div class="section-inner reveal">
-      <i class="fa-solid fa-envelope-open-text section-icon"></i>
-      <h2 class="section-title">Confirme sua Presença</h2>
-      <p class="rsvp-sub">Por favor, confirme até <span id="rsvpDeadline">a data limite</span></p>
-
-      <form id="rsvpForm" class="rsvp-form">
-        <div class="field">
-          <label for="rsvpName">Nome completo</label>
-          <input type="text" id="rsvpName" name="name" required placeholder="Seu nome">
-        </div>
-
-        <div class="field">
-          <label for="rsvpPhone">WhatsApp</label>
-          <input type="tel" id="rsvpPhone" name="phone" required placeholder="(00) 00000-0000">
-        </div>
-
-        <div class="field">
-          <label for="rsvpGuests">Número de acompanhantes</label>
-          <select id="rsvpGuests" name="guests">
-            <option value="0">Somente eu</option>
-            <option value="1">+1</option>
-            <option value="2">+2</option>
-            <option value="3">+3</option>
-            <option value="4">+4</option>
-          </select>
-        </div>
-
-        <fieldset class="field attending-field">
-          <legend>Você comparecerá?</legend>
-          <div class="radio-row">
-            <label class="radio-pill">
-              <input type="radio" name="attending" value="Sim" checked>
-              <span><i class="fa-solid fa-check"></i> Sim, estarei lá</span>
-            </label>
-            <label class="radio-pill">
-              <input type="radio" name="attending" value="Não">
-              <span><i class="fa-solid fa-xmark"></i> Não poderei ir</span>
-            </label>
+    <!-- DETALHES DO EVENTO -->
+    <section class="details" id="detalhes">
+      <div class="section-inner reveal">
+        <h2 class="section-title">Detalhes da Celebração</h2>
+        <div class="details-grid details-grid-single">
+          <div class="detail-card">
+            <i class="fa-solid fa-champagne-glasses"></i>
+            <h3 id="partyLabel">Festa</h3>
+            <p id="partyTime">19:00</p>
+            <p id="partyPlace">Edinaldo - Av</p>
           </div>
-        </fieldset>
-
-        <div class="field">
-          <label for="rsvpMessage">Mensagem para os noivos (opcional)</label>
-          <textarea id="rsvpMessage" name="message" rows="3" placeholder="Deixe seu carinho..."></textarea>
         </div>
+      </div>
+    </section>
 
-        <button type="submit" class="btn-submit" id="rsvpSubmitBtn">
-          <span>Confirmar presença</span>
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
+    <!-- LOCALIZAÇÃO -->
+    <section class="location" id="local">
+      <div class="section-inner reveal">
+        <i class="fa-solid fa-location-dot section-icon"></i>
+        <h2 class="section-title">Como Chegar</h2>
+        <p class="location-address" id="locationAddress">Rua das Flores, 123 - Centro, Cidade - UF</p>
+        <div class="map-wrap">
+          <iframe id="mapFrame" src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="location-actions">
+          <a id="mapLink" href="#" target="_blank" rel="noopener" class="btn-outline">
+            <i class="fa-solid fa-map-location-dot"></i> Ver no Google Maps
+          </a>
+          <button id="copyAddressBtn" class="btn-outline" type="button">
+            <i class="fa-regular fa-copy"></i> Copiar endereço
+          </button>
+        </div>
+      </div>
+    </section>
 
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
+    <!-- CONFIRMAÇÃO DE PRESENÇA -->
+    <section class="rsvp" id="rsvp">
+      <div class="section-inner reveal">
+        <i class="fa-solid fa-envelope-open-text section-icon"></i>
+        <h2 class="section-title">Confirme sua Presença</h2>
+        <p class="rsvp-sub">Por favor, confirme até <span id="rsvpDeadline">a data limite</span></p>
 
-  <!-- RODAPÉ -->
-  <footer class="site-footer">
-    <p class="footer-names" id="footerNames">Noivo &amp; Noiva</p>
-    <p class="footer-date" id="footerDate">00.00.2026</p>
-    <p class="footer-made">Feito com <i class="fa-solid fa-heart"></i></p>
-  </footer>
+        <form id="rsvpForm" class="rsvp-form">
+          <div class="field">
+            <label for="rsvpName">Nome completo</label>
+            <input type="text" id="rsvpName" name="name" required placeholder="Seu nome">
+          </div>
 
-</main>
+          <div class="field">
+            <label for="rsvpPhone">WhatsApp</label>
+            <input type="tel" id="rsvpPhone" name="phone" required placeholder="(00) 00000-0000">
+          </div>
 
-<script src="script.js"></script>
+          <div class="field">
+            <label for="rsvpGuests">Número de acompanhantes</label>
+            <select id="rsvpGuests" name="guests">
+              <option value="0">Somente eu</option>
+              <option value="1">+1</option>
+              <option value="2">+2</option>
+              <option value="3">+3</option>
+              <option value="4">+4</option>
+            </select>
+          </div>
+
+          <fieldset class="field attending-field">
+            <legend>Você comparecerá?</legend>
+            <div class="radio-row">
+              <label class="radio-pill">
+                <input type="radio" name="attending" value="Sim" checked>
+                <span><i class="fa-solid fa-check"></i> Sim, estarei lá</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="attending" value="Não">
+                <span><i class="fa-solid fa-xmark"></i> Não poderei ir</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="rsvpMessage">Mensagem para os noivos (opcional)</label>
+            <textarea id="rsvpMessage" name="message" rows="3" placeholder="Deixe seu carinho..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="rsvpSubmitBtn">
+            <span>Confirmar presença</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+      <p class="footer-names" id="footerNames">Noivo &amp; Noiva</p>
+      <p class="footer-date" id="footerDate">00.00.2026</p>
+      <p class="footer-made">Feito com <i class="fa-solid fa-heart"></i></p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

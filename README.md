@@ -12,7 +12,7 @@ Campos principais:
 - `weddingDateISO` — data/hora do casamento (usada na contagem regressiva)
 - `heroDateText` / `footerDateText` — data exibida em texto
 - `message` — mensagem de boas-vindas
-- `ceremony` / `reception` — horário e local de cada etapa
+- `party` — horário e local da festa
 - `address` — endereço usado no mapa (Google Maps, sem necessidade de chave de API)
 - `rsvpDeadline` — prazo para confirmar presença
 - `formEndpoint` — para onde vão as confirmações de presença (veja abaixo)

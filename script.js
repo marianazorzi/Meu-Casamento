@@ -3,32 +3,27 @@
    Edite os campos abaixo com as informações do casamento.
    ========================================================= */
 const CONFIG = {
-  groomName: "Nome do Noivo",
-  brideName: "Nome da Noiva",
+  groomName: "Lincon Fernando",
+  brideName: "Mariana Zorzi",
 
   // Data e hora do casamento (usada na contagem regressiva e no cabeçalho)
-  weddingDateISO: "2026-12-12T16:00:00",
-  heroDateText: "12 de Dezembro de 2026",
-  footerDateText: "12.12.2026",
+  weddingDateISO: "2026-11-21T19:00:00",
+  heroDateText: "21 de Novembro de 2026",
+  footerDateText: "21.11.2026",
 
   message:
     "Com a bênção de Deus e de nossas famílias, convidamos você para celebrar " +
     "conosco o início da nossa nova história. Sua presença tornará este dia " +
     "ainda mais especial.",
 
-  ceremony: {
-    label: "Cerimônia",
-    time: "16:00",
-    place: "Igreja Matriz",
-  },
-  reception: {
-    label: "Recepção",
+  party: {
+    label: "Festa",
     time: "19:00",
-    place: "Espaço de Festas",
+    place: "Edinaldo - Av",
   },
 
   // Endereço usado no mapa (Google Maps, sem necessidade de API key)
-  address: "Rua das Flores, 123 - Centro, Cidade - UF",
+  address: "Av. Celso Mazutti, 1629 - Vilhena, RO, 76981-099",
 
   // Data limite para confirmar presença (texto livre)
   rsvpDeadline: "01 de Novembro de 2026",
@@ -37,7 +32,7 @@ const CONFIG = {
   // Crie uma conta gratuita em https://formsubmit.co e troque pelo seu e-mail:
   // "https://formsubmit.co/ajax/SEU-EMAIL@gmail.com"
   // (o FormSubmit envia um e-mail de confirmação no primeiro uso)
-  formEndpoint: "",
+  formEndpoint: "https://formsubmit.co/ajax/marianazorzi123@gmail.com",
 
   // Número de WhatsApp para fallback do RSVP (com DDI+DDD), ex: 5511999999999
   whatsapp: "",
@@ -67,12 +62,9 @@ function populateContent() {
   setText("footerDate", CONFIG.footerDateText);
   setText("coupleMessage", CONFIG.message);
 
-  setText("ceremonyLabel", CONFIG.ceremony.label);
-  setText("ceremonyTime", CONFIG.ceremony.time);
-  setText("ceremonyPlace", CONFIG.ceremony.place);
-  setText("receptionLabel", CONFIG.reception.label);
-  setText("receptionTime", CONFIG.reception.time);
-  setText("receptionPlace", CONFIG.reception.place);
+  setText("partyLabel", CONFIG.party.label);
+  setText("partyTime", CONFIG.party.time);
+  setText("partyPlace", CONFIG.party.place);
 
   setText("locationAddress", CONFIG.address);
   setText("rsvpDeadline", CONFIG.rsvpDeadline);
