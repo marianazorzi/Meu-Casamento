@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function populateContent() {
-  const coupleNames = `${CONFIG.groomName} & ${CONFIG.brideName}`;
+  const coupleNames = `${CONFIG.brideName} & ${CONFIG.groomName}`;
 
   setText("splashNames", coupleNames);
   setText("heroNames", coupleNames);

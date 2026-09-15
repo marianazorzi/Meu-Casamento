@@ -1,5 +1,5 @@
 /* =========================================================
-   CONVITE DE CASAMENTO — paleta creme, champagne e dourado
+   CONVITE DE CASAMENTO — paleta bege/creme com azul bebê
    ========================================================= */
 
 :root{
@@ -9,8 +9,13 @@
   --sand-300:#efdfc0;
   --sand-400:#ddc192;
 
-  --gold-500:#c8a24c;
-  --gold-600:#a9822f;
+  --blue-100:#eef4f7;
+  --blue-200:#dce8ee;
+  --blue-300:#c7dae3;
+  --blue-400:#afc4d2;
+  --blue-500:#91aebe;
+  --blue-600:#74919f;
+  --blue-ink:#4a6472;
 
   --brown-500:#8a7358;
   --brown-700:#5c4b38;
@@ -18,7 +23,7 @@
 
   --bg: var(--cream-100);
   --card-bg:#ffffff;
-  --shadow: 0 14px 34px rgba(58,47,34,.12);
+  --shadow: 0 14px 34px rgba(58,47,34,.1);
 
   --font-display:'Playfair Display', serif;
   --font-serif:'Cormorant Garamond', serif;
@@ -55,7 +60,7 @@ img{max-width:100%;display:block;}
 
 .section-icon{
   font-size:1.5rem;
-  color: var(--gold-600);
+  color: var(--blue-600);
   margin-bottom: 16px;
 }
 
@@ -65,7 +70,7 @@ img{max-width:100%;display:block;}
   font-size:.72rem;
   letter-spacing:3.5px;
   text-transform:uppercase;
-  color:var(--gold-600);
+  color:var(--blue-600);
   margin:0 0 12px;
 }
 .eyebrow.light{ color:var(--sand-300); }
@@ -91,7 +96,7 @@ img{max-width:100%;display:block;}
   transform:none;
 }
 
-/* ---------- ornamento (linhas + losango dourado) ---------- */
+/* ---------- ornamento (linhas + losango em azul bebê) ---------- */
 .ornament, .divider{
   display:flex;
   align-items:center;
@@ -102,7 +107,7 @@ img{max-width:100%;display:block;}
 .ornament span, .divider span{ width:44px; height:1px; background:var(--sand-400); }
 .ornament i, .divider i{
   width:7px; height:7px;
-  border:1px solid var(--gold-500);
+  border:1px solid var(--blue-400);
   transform:rotate(45deg);
   display:inline-block;
 }
@@ -132,12 +137,27 @@ img{max-width:100%;display:block;}
 .splash-decor{
   position:absolute;
   width:220px;height:220px;
-  border:1px solid var(--sand-400);
+  border:1px solid var(--blue-300);
   border-radius:50%;
-  opacity:.5;
+  opacity:.4;
 }
 .splash-decor.top{ top:-90px; left:-70px; }
-.splash-decor.bottom{ bottom:-90px; right:-70px; border-color:var(--gold-500); opacity:.3; }
+.splash-decor.bottom{ bottom:-90px; right:-70px; border-color:var(--blue-400); opacity:.3; }
+
+.floral{
+  position:absolute;
+  width:104px;
+  height:104px;
+  stroke:var(--blue-300);
+  stroke-width:1.4;
+  fill:none;
+  opacity:.6;
+}
+.floral.top-left{ top:22px; left:18px; }
+.floral.bottom-right{ bottom:22px; right:18px; transform:rotate(180deg); }
+@media (max-width:420px){
+  .floral{ width:76px; height:76px; }
+}
 
 .envelope-wrap{
   position:relative;
@@ -200,7 +220,7 @@ img{max-width:100%;display:block;}
   transition: transform 1s cubic-bezier(.2,.8,.2,1);
   z-index:1;
 }
-.envelope-letter i{ color:var(--gold-500); font-size:1.1rem; }
+.envelope-letter i{ color:var(--blue-400); font-size:1.1rem; }
 
 .envelope-flap{
   position:absolute;
@@ -221,7 +241,7 @@ img{max-width:100%;display:block;}
   transform:translate(-50%,0);
   width:38px;height:38px;
   border-radius:50%;
-  background: var(--gold-600);
+  background: var(--blue-600);
   color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-size:.85rem;
@@ -249,16 +269,16 @@ img{max-width:100%;display:block;}
   font-size:.82rem;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  background: var(--brown-900);
+  background: var(--blue-500);
   color:#fff;
   border:none;
   padding:15px 32px;
   border-radius:999px;
   cursor:pointer;
-  box-shadow:0 10px 24px rgba(58,47,34,.25);
+  box-shadow:0 4px 10px rgba(74,100,114,.14);
   transition: background .25s ease, transform .2s ease;
 }
-.btn-open:hover{ background:var(--gold-600); transform:translateY(-2px); }
+.btn-open:hover{ background:var(--blue-600); transform:translateY(-2px); }
 .btn-open:active{ transform:translateY(0); }
 .btn-open:disabled{ opacity:.6; cursor:default; }
 
@@ -302,7 +322,7 @@ img{max-width:100%;display:block;}
   position:absolute;
   inset:0;
   background:
-    linear-gradient(180deg, rgba(38,31,22,.42) 0%, rgba(38,31,22,.3) 45%, rgba(38,31,22,.62) 100%);
+    linear-gradient(180deg, rgba(30,40,46,.44) 0%, rgba(30,40,46,.3) 45%, rgba(30,40,46,.64) 100%);
 }
 
 .hero-inner{ position:relative; z-index:1; max-width:640px; }
@@ -332,14 +352,14 @@ img{max-width:100%;display:block;}
   font-family:var(--font-serif);
   font-style:italic;
   font-size:1.2rem;
-  color:var(--sand-300);
+  color:var(--blue-200);
   margin:0 0 6px;
   text-shadow:0 1px 3px rgba(0,0,0,.3), 0 2px 14px rgba(0,0,0,.22);
 }
 
 .hero .divider{ margin:16px 0 18px; }
 .hero .divider span{ background:rgba(255,255,255,.55); }
-.hero .divider i{ border-color:var(--gold-500); background:var(--gold-500); }
+.hero .divider i{ border-color:var(--blue-400); background:var(--blue-400); }
 
 .hero-date{
   font-family:var(--font-serif);
@@ -399,7 +419,7 @@ img{max-width:100%;display:block;}
   font-family:var(--font-script);
   font-size:2.1rem;
   font-weight:400;
-  color:var(--gold-600);
+  color:var(--blue-600);
   margin:0;
 }
 
@@ -413,7 +433,7 @@ img{max-width:100%;display:block;}
    ========================================================= */
 .countdown-section{
   position:relative;
-  background: var(--brown-900);
+  background: var(--blue-ink);
   color:#fff;
   overflow:hidden;
 }
@@ -421,7 +441,7 @@ img{max-width:100%;display:block;}
   content:"";
   position:absolute;
   inset:0;
-  background: radial-gradient(circle at 50% 0%, rgba(200,162,76,.16), transparent 60%);
+  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.1), transparent 60%);
   pointer-events:none;
 }
 .countdown{
@@ -440,7 +460,7 @@ img{max-width:100%;display:block;}
   font-size:clamp(2.1rem, 6.5vw, 3.1rem);
   font-weight:600;
   line-height:1;
-  color:var(--sand-300);
+  color:var(--blue-100);
 }
 .cd-label{
   display:block;
@@ -449,13 +469,13 @@ img{max-width:100%;display:block;}
   text-transform:uppercase;
   letter-spacing:2px;
   margin-top:10px;
-  color:rgba(253,246,236,.7);
+  color:rgba(253,246,236,.72);
 }
 .cd-sep{
   font-family:var(--font-display);
   font-size:1.6rem;
-  color:var(--gold-500);
-  opacity:.55;
+  color:var(--blue-300);
+  opacity:.6;
   margin-top:2px;
 }
 @media (max-width:480px){
@@ -493,13 +513,13 @@ img{max-width:100%;display:block;}
   content:"";
   position:absolute;
   inset:12px;
-  border:1px solid var(--gold-500);
+  border:1px solid var(--blue-400);
   opacity:.35;
   pointer-events:none;
 }
 .detail-card i{
   font-size:1.5rem;
-  color:var(--gold-600);
+  color:var(--blue-600);
   margin-bottom:14px;
 }
 .detail-card h3{
@@ -514,7 +534,7 @@ img{max-width:100%;display:block;}
 .detail-time{
   font-family:var(--font-serif);
   font-size:1.7rem;
-  color:var(--gold-600);
+  color:var(--blue-600);
   margin:0 0 4px !important;
 }
 .detail-card p{
@@ -555,15 +575,15 @@ img{max-width:100%;display:block;}
   font-family:var(--font-sans);
   font-size:.85rem;
   text-decoration:none;
-  color:var(--brown-700);
-  background:#fff;
-  border:1px solid var(--sand-400);
+  color:var(--blue-600);
+  background:transparent;
+  border:1px solid var(--blue-400);
   padding:11px 20px;
   border-radius:999px;
   cursor:pointer;
   transition: background .2s ease, color .2s ease, border-color .2s ease;
 }
-.btn-outline:hover{ background:var(--brown-900); color:#fff; border-color:var(--brown-900); }
+.btn-outline:hover{ background:var(--blue-100); border-color:var(--blue-600); color:var(--blue-ink); }
 
 /* =========================================================
    RSVP
@@ -607,7 +627,7 @@ img{max-width:100%;display:block;}
   resize:vertical;
 }
 .field input:focus, .field select:focus, .field textarea:focus{
-  border-bottom-color:var(--gold-600);
+  border-bottom-color:var(--blue-600);
 }
 
 .radio-row{ display:flex; gap:12px; flex-wrap:wrap; }
@@ -632,12 +652,12 @@ img{max-width:100%;display:block;}
   transition: all .2s ease;
 }
 .radio-pill input:checked + span{
-  background:var(--brown-900);
-  border-color:var(--brown-900);
+  background:var(--blue-500);
+  border-color:var(--blue-500);
   color:#fff;
 }
 .radio-pill input:focus-visible + span{
-  outline:2px solid var(--gold-500);
+  outline:2px solid var(--blue-400);
   outline-offset:2px;
 }
 
@@ -650,16 +670,17 @@ img{max-width:100%;display:block;}
   font-size:.9rem;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  background:linear-gradient(135deg, var(--gold-500), var(--gold-600));
+  background:var(--blue-500);
   color:#fff;
   border:none;
   padding:16px;
   border-radius:999px;
   cursor:pointer;
   margin-top:6px;
+  box-shadow:0 4px 10px rgba(74,100,114,.14);
   transition: background .2s ease, transform .2s ease;
 }
-.btn-submit:hover{ background:var(--brown-900); transform:translateY(-2px); }
+.btn-submit:hover{ background:var(--blue-600); transform:translateY(-2px); }
 .btn-submit:disabled{ opacity:.6; cursor:default; transform:none; }
 
 .form-status{
@@ -700,4 +721,4 @@ img{max-width:100%;display:block;}
   opacity:.6;
   margin:0;
 }
-.footer-made i{ color:var(--gold-500); }
+.footer-made i{ color:var(--blue-400); }
