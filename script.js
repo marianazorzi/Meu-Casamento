@@ -32,7 +32,7 @@ const CONFIG = {
   // Crie uma conta gratuita em https://formsubmit.co e troque pelo seu e-mail:
   // "https://formsubmit.co/ajax/SEU-EMAIL@gmail.com"
   // (o FormSubmit envia um e-mail de confirmação no primeiro uso)
-  formEndpoint: "https://formsubmit.co/ajax/marianazorzi123@gmail.com",
+  formEndpoint: "https://formsubmit.co/ajax/casamentomarianaelincon@gmail.com",
 
   // Número de WhatsApp para fallback do RSVP (com DDI+DDD), ex: 5511999999999
   whatsapp: "",
