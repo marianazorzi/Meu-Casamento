@@ -161,17 +161,17 @@
         <form id="rsvpForm" class="rsvp-form">
           <div class="field">
             <label for="rsvpName">Nome completo</label>
-            <input type="text" id="rsvpName" name="name" required placeholder="Seu nome">
+            <input type="text" id="rsvpName" name="nome" required placeholder="Seu nome">
           </div>
 
           <div class="field">
             <label for="rsvpPhone">WhatsApp</label>
-            <input type="tel" id="rsvpPhone" name="phone" required placeholder="(00) 00000-0000">
+            <input type="tel" id="rsvpPhone" name="whatsapp" required placeholder="(00) 00000-0000">
           </div>
 
           <div class="field">
             <label for="rsvpGuests">Número de acompanhantes</label>
-            <select id="rsvpGuests" name="guests">
+            <select id="rsvpGuests" name="pessoas">
               <option value="1">Somente eu</option>
               <option value="2">+1</option>
               <option value="3">+2</option>
@@ -185,11 +185,11 @@
             <legend>Você comparecerá?</legend>
             <div class="radio-row">
               <label class="radio-pill">
-                <input type="radio" name="attending" value="Sim" checked>
+                <input type="radio" name="comparecera" value="Sim" checked>
                 <span><i class="fa-solid fa-check"></i> Sim, estarei lá</span>
               </label>
               <label class="radio-pill">
-                <input type="radio" name="attending" value="Não">
+                <input type="radio" name="comparecera" value="Não">
                 <span><i class="fa-solid fa-xmark"></i> Não poderei ir</span>
               </label>
             </div>
@@ -197,7 +197,7 @@
 
           <div class="field">
             <label for="rsvpMessage">Mensagem para os noivos (opcional)</label>
-            <textarea id="rsvpMessage" name="message" rows="3" placeholder="Deixe seu carinho..."></textarea>
+            <textarea id="rsvpMessage" name="mensagem" rows="3" placeholder="Deixe seu carinho..."></textarea>
           </div>
 
           <button type="submit" class="btn-submit" id="rsvpSubmitBtn">
@@ -207,6 +207,40 @@
 
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
+      </div>
+    </section>
+
+    <!-- PRESENTES -->
+    <section class="gifts" id="presentes">
+      <div class="section-inner reveal">
+        <i class="fa-solid fa-gift section-icon gift-icon"></i>
+        <span class="eyebrow">Presentes</span>
+        <h2 class="section-title">Quer nos presentear?</h2>
+        <p class="gifts-sub">
+          Ter você com a gente nesse dia já é o maior presente. Mas se quiser nos ajudar a montar
+          a nossa casa nova, vai ficar guardado com muito carinho.
+        </p>
+
+        <div class="gifts-grid">
+          <div class="gift-card">
+            <i class="fa-solid fa-qrcode"></i>
+            <h3>Pix</h3>
+            <p class="pix-holder" id="pixHolder">Noivo &amp; Noiva</p>
+            <p class="pix-key" id="pixKey">chave@pix.com</p>
+            <button id="copyPixBtn" class="btn-outline" type="button">
+              <i class="fa-regular fa-copy"></i> Copiar chave Pix
+            </button>
+          </div>
+
+          <div class="gift-card">
+            <i class="fa-solid fa-gifts"></i>
+            <h3>Lista de presentes</h3>
+            <p>Escolha um mimo especial para o nosso novo lar.</p>
+            <a id="giftListLink" href="#" target="_blank" rel="noopener" class="btn-outline btn-outline-accent">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver lista de presentes
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 

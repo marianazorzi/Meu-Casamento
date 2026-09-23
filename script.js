@@ -36,6 +36,12 @@ const CONFIG = {
 
   // Número de WhatsApp para fallback do RSVP (com DDI+DDD), ex: 5511999999999
   whatsapp: "",
+
+  // Chave Pix para presentear os noivos
+  pixKey: "linconmariana123@gmail.com",
+
+  // Link da lista de presentes
+  giftListUrl: "https://lista.havan.com.br/Convidado/ItensListaPresente/962770",
 };
 
 /* ========================================================= */
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupRsvpForm();
   setupCopyAddress();
   setupPhoneMask();
+  setupCopyPix();
 });
 
 function populateContent() {
@@ -69,6 +76,12 @@ function populateContent() {
 
   setText("locationAddress", CONFIG.address);
   setText("rsvpDeadline", CONFIG.rsvpDeadline);
+
+  setText("pixKey", CONFIG.pixKey);
+  setText("pixHolder", coupleNames);
+
+  const giftLink = document.getElementById("giftListLink");
+  if (giftLink) giftLink.href = CONFIG.giftListUrl;
 
   document.title = `Casamento de ${coupleNames}`;
 }
@@ -192,6 +205,24 @@ function setupCopyAddress() {
 }
 
 /* ---------------------------------------------------------
+   COPIAR CHAVE PIX
+   --------------------------------------------------------- */
+function setupCopyPix() {
+  const btn = document.getElementById("copyPixBtn");
+  if (!btn) return;
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(CONFIG.pixKey);
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Chave copiada!';
+      setTimeout(() => (btn.innerHTML = original), 2000);
+    } catch (e) {
+      alert(CONFIG.pixKey);
+    }
+  });
+}
+
+/* ---------------------------------------------------------
    MÁSCARA DE TELEFONE (WHATSAPP)
    --------------------------------------------------------- */
 function setupPhoneMask() {
@@ -231,7 +262,7 @@ function setupRsvpForm() {
     const data = new FormData(form);
     const payload = Object.fromEntries(data.entries());
 
-    if (!payload.name || !payload.phone) {
+    if (!payload.nome || !payload.whatsapp) {
       status.textContent = "Preencha nome e WhatsApp.";
       status.classList.add("err");
       return;
@@ -278,10 +309,10 @@ function setupRsvpForm() {
 function buildWhatsAppMessage(payload) {
   return (
     `Confirmação de presença:\n` +
-    `Nome: ${payload.name}\n` +
-    `WhatsApp: ${payload.phone}\n` +
-    `Acompanhantes: ${payload.guests}\n` +
-    `Comparecerá: ${payload.attending}\n` +
-    (payload.message ? `Mensagem: ${payload.message}` : "")
+    `Nome: ${payload.nome}\n` +
+    `WhatsApp: ${payload.whatsapp}\n` +
+    `Acompanhantes: ${payload.pessoas}\n` +
+    `Comparecerá: ${payload.comparecera}\n` +
+    (payload.mensagem ? `Mensagem: ${payload.mensagem}` : "")
   );
 }
