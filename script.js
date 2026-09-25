@@ -26,7 +26,7 @@ const CONFIG = {
   address: "Av. Celso Mazutti, 1629 - Vilhena, RO, 76981-099",
 
   // Data limite para confirmar presença (texto livre)
-  rsvpDeadline: "01 de Novembro de 2026",
+  rsvpDeadline: "20 de Outubro de 2026",
 
   // Endpoint para receber as confirmações de presença.
   // Crie uma conta gratuita em https://formsubmit.co e troque pelo seu e-mail:
