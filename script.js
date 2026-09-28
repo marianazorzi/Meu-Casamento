@@ -35,7 +35,7 @@ const CONFIG = {
   formEndpoint: "https://formsubmit.co/ajax/casamentomarianaelincon@gmail.com",
 
   // Número de WhatsApp para fallback do RSVP (com DDI+DDD), ex: 5511999999999
-  whatsapp: "5569984064081",
+  whatsapp: "",
 
   // Chave Pix para presentear os noivos
   pixKey: "linconmariana123@gmail.com",
@@ -279,32 +279,22 @@ function setupRsvpForm() {
         });
         if (!res.ok) throw new Error("Falha no envio");
 
-        openWhatsApp(payload);
         showSuccess();
       } catch (err) {
-        if (CONFIG.whatsapp) {
-          openWhatsApp(payload);
-          showSuccess();
-        } else {
-          status.textContent = "Não foi possível enviar agora. Tente novamente.";
-          status.classList.add("err");
-          submitBtn.disabled = false;
-        }
+        status.textContent =
+          "Não foi possível enviar agora. Tente novamente em instantes.";
+        status.classList.add("err");
+        submitBtn.disabled = false;
       }
     } else if (CONFIG.whatsapp) {
-      openWhatsApp(payload);
+      const text = buildWhatsAppMessage(payload);
+      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
       showSuccess();
     } else {
       status.textContent =
         "Formulário ainda não configurado (defina formEndpoint ou whatsapp em script.js).";
       status.classList.add("err");
       submitBtn.disabled = false;
-    }
-
-    function openWhatsApp(data) {
-      if (!CONFIG.whatsapp) return;
-      const text = buildWhatsAppMessage(data);
-      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
     }
 
     function showSuccess() {
