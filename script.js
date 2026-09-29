@@ -34,8 +34,10 @@ const CONFIG = {
   // (o FormSubmit envia um e-mail de confirmação no primeiro uso)
   formEndpoint: "https://formsubmit.co/ajax/casamentomarianaelincon@gmail.com",
 
-  // Número de WhatsApp para fallback do RSVP (com DDI+DDD), ex: 5511999999999
-  whatsapp: "",
+  // Número de WhatsApp para o RSVP (com DDI+DDD), ex: 5511999999999
+  // Usado como confirmação principal e garantida (não depende de servidor
+  // externo), enquanto o e-mail é enviado em segundo plano como bônus.
+  whatsapp: "5569984064081",
 
   // Chave Pix para presentear os noivos
   pixKey: "linconmariana123@gmail.com",
@@ -272,10 +274,28 @@ function setupRsvpForm() {
     const originalBtnHTML = submitBtn.innerHTML;
     submitBtn.innerHTML = '<span>Enviando...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
 
+    // Tenta enviar por e-mail em segundo plano (best-effort), sem travar a
+    // confirmação caso o FormSubmit esteja lento ou indisponível.
     if (CONFIG.formEndpoint) {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 12000);
+      const timeout = setTimeout(() => controller.abort(), 10000);
+      fetch(CONFIG.formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      })
+        .catch(() => {})
+        .finally(() => clearTimeout(timeout));
+    }
 
+    if (CONFIG.whatsapp) {
+      const text = buildWhatsAppMessage(payload);
+      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
+      showSuccess();
+    } else if (CONFIG.formEndpoint) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
       try {
         const res = await fetch(CONFIG.formEndpoint, {
           method: "POST",
@@ -284,7 +304,6 @@ function setupRsvpForm() {
           signal: controller.signal,
         });
         if (!res.ok) throw new Error("Falha no envio");
-
         showSuccess();
       } catch (err) {
         status.textContent =
@@ -297,10 +316,6 @@ function setupRsvpForm() {
       } finally {
         clearTimeout(timeout);
       }
-    } else if (CONFIG.whatsapp) {
-      const text = buildWhatsAppMessage(payload);
-      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
-      showSuccess();
     } else {
       status.textContent =
         "Formulário ainda não configurado (defina formEndpoint ou whatsapp em script.js).";
