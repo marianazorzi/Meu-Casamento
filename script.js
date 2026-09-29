@@ -28,15 +28,16 @@ const CONFIG = {
   // Data limite para confirmar presença (texto livre)
   rsvpDeadline: "20 de Outubro de 2026",
 
-  // Endpoint para receber as confirmações de presença.
-  // Crie uma conta gratuita em https://formsubmit.co e troque pelo seu e-mail:
-  // "https://formsubmit.co/ajax/SEU-EMAIL@gmail.com"
-  // (o FormSubmit envia um e-mail de confirmação no primeiro uso)
-  formEndpoint: "https://formsubmit.co/ajax/casamentomarianaelincon@gmail.com",
+  // Endpoint para receber as confirmações de presença por e-mail.
+  // Web3Forms: serviço de formulário-para-e-mail com chave pública
+  // (pode ficar direto no código, não precisa configurar nada no Vercel).
+  formEndpoint: "https://api.web3forms.com/submit",
+  web3formsAccessKey: "4803c402-594e-4287-ac3f-498fc712e8fc",
 
-  // Número de WhatsApp para o RSVP (com DDI+DDD), ex: 5511999999999
-  // Usado como confirmação principal e garantida (não depende de servidor
-  // externo), enquanto o e-mail é enviado em segundo plano como bônus.
+  // Número de WhatsApp (com DDI+DDD), ex: 5511999999999.
+  // Usado apenas como rede de segurança silenciosa: só entra em ação se
+  // o envio por e-mail falhar ou demorar demais, para o convidado nunca
+  // ficar travado sem confirmar.
   whatsapp: "5569984064081",
 
   // Chave Pix para presentear os noivos
@@ -274,51 +275,46 @@ function setupRsvpForm() {
     const originalBtnHTML = submitBtn.innerHTML;
     submitBtn.innerHTML = '<span>Enviando...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
 
-    // Tenta enviar por e-mail em segundo plano (best-effort), sem travar a
-    // confirmação caso o FormSubmit esteja lento ou indisponível.
+    // 1) Tenta primeiro por e-mail (caminho principal). Se falhar ou
+    //    demorar demais, cai automaticamente para o WhatsApp como rede de
+    //    segurança silenciosa — o convidado nunca fica travado.
+    let emailSent = false;
+
     if (CONFIG.formEndpoint) {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 10000);
-      fetch(CONFIG.formEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      })
-        .catch(() => {})
-        .finally(() => clearTimeout(timeout));
-    }
-
-    if (CONFIG.whatsapp) {
-      const text = buildWhatsAppMessage(payload);
-      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
-      showSuccess();
-    } else if (CONFIG.formEndpoint) {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 10000);
+      const timeout = setTimeout(() => controller.abort(), 9000);
       try {
+        const emailPayload = CONFIG.web3formsAccessKey
+          ? {
+              access_key: CONFIG.web3formsAccessKey,
+              subject: `Confirmação de presença: ${payload.nome}`,
+              ...payload,
+            }
+          : payload;
+
         const res = await fetch(CONFIG.formEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(emailPayload),
           signal: controller.signal,
         });
-        if (!res.ok) throw new Error("Falha no envio");
-        showSuccess();
+        const resBody = await res.json().catch(() => ({}));
+        emailSent = res.ok && resBody.success !== false;
       } catch (err) {
-        status.textContent =
-          err.name === "AbortError"
-            ? "A confirmação demorou demais. Verifique sua internet e tente novamente."
-            : "Não foi possível enviar agora. Tente novamente em instantes.";
-        status.classList.add("err");
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHTML;
+        emailSent = false;
       } finally {
         clearTimeout(timeout);
       }
+    }
+
+    if (emailSent) {
+      showSuccess();
+    } else if (CONFIG.whatsapp) {
+      const text = buildWhatsAppMessage(payload);
+      window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
+      showSuccess();
     } else {
-      status.textContent =
-        "Formulário ainda não configurado (defina formEndpoint ou whatsapp em script.js).";
+      status.textContent = "Não foi possível enviar agora. Tente novamente em instantes.";
       status.classList.add("err");
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnHTML;
