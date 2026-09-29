@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCopyAddress();
   setupPhoneMask();
   setupCopyPix();
-  setupNavScrollSpy();
 });
 
 function populateContent() {
@@ -270,22 +269,33 @@ function setupRsvpForm() {
     }
 
     submitBtn.disabled = true;
+    const originalBtnHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span>Enviando...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
 
     if (CONFIG.formEndpoint) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
+
       try {
         const res = await fetch(CONFIG.formEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(payload),
+          signal: controller.signal,
         });
         if (!res.ok) throw new Error("Falha no envio");
 
         showSuccess();
       } catch (err) {
         status.textContent =
-          "Não foi possível enviar agora. Tente novamente em instantes.";
+          err.name === "AbortError"
+            ? "A confirmação demorou demais. Verifique sua internet e tente novamente."
+            : "Não foi possível enviar agora. Tente novamente em instantes.";
         status.classList.add("err");
         submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+      } finally {
+        clearTimeout(timeout);
       }
     } else if (CONFIG.whatsapp) {
       const text = buildWhatsAppMessage(payload);
@@ -296,6 +306,7 @@ function setupRsvpForm() {
         "Formulário ainda não configurado (defina formEndpoint ou whatsapp em script.js).";
       status.classList.add("err");
       submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHTML;
     }
 
     function showSuccess() {
@@ -303,6 +314,7 @@ function setupRsvpForm() {
       status.classList.add("ok");
       form.reset();
       submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnHTML;
 
       const nudge = document.getElementById("giftNudge");
       if (nudge) {
@@ -311,32 +323,6 @@ function setupRsvpForm() {
       }
     }
   });
-}
-
-/* ---------------------------------------------------------
-   MENU (SCROLL-SPY)
-   --------------------------------------------------------- */
-function setupNavScrollSpy() {
-  const nav = document.getElementById("siteNav");
-  if (!nav) return;
-  const links = Array.from(nav.querySelectorAll("a"));
-  const sections = links
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        links.forEach((link) => link.classList.remove("active"));
-        const active = links[sections.indexOf(entry.target)];
-        if (active) active.classList.add("active");
-      });
-    },
-    { rootMargin: "-50% 0px -45% 0px" }
-  );
-
-  sections.forEach((section) => observer.observe(section));
 }
 
 function buildWhatsAppMessage(payload) {
