@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCopyAddress();
   setupPhoneMask();
   setupCopyPix();
+  setupNavScrollSpy();
 });
 
 function populateContent() {
@@ -223,6 +224,32 @@ function setupCopyPix() {
       alert(CONFIG.pixKey);
     }
   });
+}
+
+/* ---------------------------------------------------------
+   MENU (SCROLL-SPY)
+   --------------------------------------------------------- */
+function setupNavScrollSpy() {
+  const nav = document.getElementById("siteNav");
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll("a"));
+  const sections = links
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link) => link.classList.remove("active"));
+        const active = links[sections.indexOf(entry.target)];
+        if (active) active.classList.add("active");
+      });
+    },
+    { rootMargin: "-50% 0px -45% 0px" }
+  );
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 /* ---------------------------------------------------------
